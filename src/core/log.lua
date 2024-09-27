@@ -2,7 +2,7 @@
 logger=class:extend({
 	filename="log",
 	log=function(self,text,overwrite) 
-		local t = (type(t)=="table") and serialize(text) or tostr(text)
-		printh(t,self.filename,overwrite)
+		local txt = (type(text)=="table") and serialize(text) or tostr(text)
+		printh(txt,self.filename,overwrite)
 	end
 })
