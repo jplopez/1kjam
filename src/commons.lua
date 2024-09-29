@@ -13,7 +13,7 @@ scene=class:extend({
 })
 
 -- generates the matching key
-function refresh_key()key={rnd(clrs),rnd(clrs)}end
+function refresh_key(_ENV)key={rnd(clrs),rnd(clrs)}end
 
 function l(text,...)
   local pre=tostr(t())pre=pre..spaces(8-#pre)
@@ -38,14 +38,14 @@ function react(_ENV,x,y)
   if #impact>0 then
     local match=false
     for tl in all(impact)do
-      if(tl~=e and key_check(trigger,tl))board:destroy(tl.x,tl.y)tl:destroy()match=true
+      if(tl~=e and key_check(_ENV,trigger,tl))board:destroy(tl.x,tl.y)tl:destroy()match=true
     end
-    if(match)board:destroy(x,y)trigger:destroy()refresh_key()
+    if(match)board:destroy(x,y)trigger:destroy()refresh_key(_ENV)
   end
 end
 
 -- checks the if slot x,y with color 'c' matches any of the keys
-function key_check(tl1,tl2)
+function key_check(_ENV,tl1,tl2)
   l("key check")l(tl1)l(tl2)
   return (tl1.clr==key[1] and tl2.clr==key[2])
     or (tl1.clr==key[2] and tl2.clr==key[1])
