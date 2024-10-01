@@ -23,7 +23,7 @@ title_scene=scene:extend({
 	end,
 
 	create_tile=function(_ENV)
-		local tl=tile.random(_ENV,1+rnd(7),1)
+		local tl=random_tile(_ENV,1+rnd(7),1)
 		tl.update=function(_ENV)
 			y+=tsp
 			if(y==16)y=1x=1+rnd(7)

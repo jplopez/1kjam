@@ -1,7 +1,7 @@
 board=entity:extend({
 
-  max_row=16,
-  max_col=8,
+--  max_row=16,
+--  max_col=8,
   tiles={},
 
   setup=function(_ENV)
@@ -15,7 +15,7 @@ board=entity:extend({
 
   --game loop
   update=function(_ENV)
-    l("update board")
+    --l("update board")
     for r=max_row,1,-1 do
       for c=max_col,1,-1 do
         if(tiles[c][r]~=global.e)then
@@ -37,7 +37,11 @@ board=entity:extend({
 
   --accessors
   get=function(_ENV,x,y)return tiles[x][y]end,
-  set=function(_ENV,x,y,value)tiles[x][y]=value end,
+  set=function(_ENV,x,y,value)
+    if(value~=e)then
+      value.x,value.y=x,y end 
+    tiles[x][y]=value 
+  end,
   is_empty=function(_ENV,x,y)return tiles[x][y]==e end,
 
   move=function(_ENV,x,y,dx,dy)
